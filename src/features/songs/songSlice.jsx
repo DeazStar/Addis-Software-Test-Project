@@ -19,10 +19,26 @@ const songSlice = createSlice({
     getSongsFailure: (state) => {
       state.isLoading = false;
     },
+    deleteSongsCall: (state) => {
+      state.isLoading = true;
+    },
+    deleteSongsSuccess: (state, action) => {
+      const songId = action.payload;
+      state.songs.splice(
+        state.songs.findIndex((song) => song.id === songId),
+        1
+      );
+      state.isLoading = false;
+    },
   },
 });
 
-export const { getSongsFetch, getSongsSuccess, getSongsFailure } =
-  songSlice.actions;
+export const {
+  getSongsFetch,
+  getSongsSuccess,
+  getSongsFailure,
+  deleteSongsCall,
+  deleteSongsSuccess,
+} = songSlice.actions;
 
 export default songSlice.reducer;

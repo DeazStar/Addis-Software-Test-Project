@@ -7,8 +7,7 @@ function List({ songs, setIsModelOpen, modelType, setModelType }) {
       {songs.map((song) => (
         <SongItem
           key={song.id}
-          songname={song.songname}
-          artist={song.artist}
+          song={song}
           setIsModelOpen={setIsModelOpen}
           modelType={modelType}
           setModelType={setModelType}

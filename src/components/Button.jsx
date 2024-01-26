@@ -1,6 +1,12 @@
 import StyledButton from "./styles/StyledButton";
 
-function Button({ children, type, setIsModelOpen, setModelType }) {
+function Button({
+  children,
+  type,
+  setIsModelOpen,
+  setModelType,
+  handleDelete,
+}) {
   if (type === "add")
     return (
       <StyledButton
@@ -19,7 +25,11 @@ function Button({ children, type, setIsModelOpen, setModelType }) {
     );
 
   if (type === "delete")
-    return <StyledButton $backgroundColor={"red"}>{children}</StyledButton>;
+    return (
+      <StyledButton $backgroundColor={"red"} onClick={handleDelete}>
+        {children}
+      </StyledButton>
+    );
 
   if (type === "edit")
     return (

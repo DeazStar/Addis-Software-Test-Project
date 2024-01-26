@@ -1,20 +1,23 @@
 import { SongName, Author } from "./styles/Song.styled";
 import Button from "./Button";
 import Wrapper from "./styles/Wrapper.styled";
+import { useDispatch } from "react-redux";
+import { deleteSongsCall } from "../features/songs/songSlice";
 
-function SongItem({
-  songname,
-  artist,
-  setIsModelOpen,
-  modelType,
-  setModelType,
-}) {
+function SongItem({ song, setIsModelOpen, modelType, setModelType }) {
+  const dispatch = useDispatch();
+
+  function handleDeleteSong(id) {
+    console.log("deleting");
+    dispatch(deleteSongsCall(id));
+  }
+
   return (
     <>
       <Wrapper>
         <div>
-          <SongName>{songname}</SongName>
-          <Author>{artist}</Author>
+          <SongName>{song.songname}</SongName>
+          <Author>{song.artist}</Author>
         </div>
         <div>
           <Button
@@ -25,7 +28,10 @@ function SongItem({
           >
             <p>Edit</p>
           </Button>
-          <Button type={"delete"}>
+          <Button
+            type={"delete"}
+            handleDelete={() => handleDeleteSong(song.id)}
+          >
             <p>Delete</p>
           </Button>
         </div>
