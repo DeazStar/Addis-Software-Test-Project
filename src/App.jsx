@@ -13,6 +13,7 @@ import ShadowContainer from "./components/styles/ShadowContainer.styled";
 
 function App() {
   const [isModelOpen, setIsModelOpen] = useState(false);
+  const [modelType, setModelType] = useState("add");
   const songs = useSelector((state) => state.songs.songs);
   const isLoading = useSelector((state) => state.songs.isLoading);
   const dispatch = useDispatch();
@@ -26,17 +27,34 @@ function App() {
       <NavBar />
 
       <Main>
-        <Button type={"add"} setIsModelOpen={setIsModelOpen}>
+        <Button
+          type={"add"}
+          setIsModelOpen={setIsModelOpen}
+          setModelType={setModelType}
+        >
           <p> + Add </p>
         </Button>
 
         <Container>
-          {isLoading ? <Loading /> : <List songs={songs} />}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <List
+              songs={songs}
+              setIsModelOpen={setIsModelOpen}
+              modelType={modelType}
+              setModelType={setModelType}
+            />
+          )}
         </Container>
 
         {isModelOpen && (
           <ShadowContainer>
-            <Model setIsModelOpen={setIsModelOpen} />
+            <Model
+              setIsModelOpen={setIsModelOpen}
+              modelType={modelType}
+              setModelType={setModelType}
+            />
           </ShadowContainer>
         )}
       </Main>

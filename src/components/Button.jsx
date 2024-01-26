@@ -1,11 +1,18 @@
 import StyledButton from "./styles/StyledButton";
 
-function Button({ children, type, setIsModelOpen }) {
+function Button({ children, type, setIsModelOpen, setModelType }) {
   if (type === "add")
     return (
       <StyledButton
         $backgroundColor={"#006fD0"}
-        onClick={setIsModelOpen ? () => setIsModelOpen(true) : undefined}
+        onClick={
+          setIsModelOpen
+            ? () => {
+                setModelType(type);
+                setIsModelOpen(true);
+              }
+            : undefined
+        }
       >
         {children}
       </StyledButton>
@@ -19,7 +26,14 @@ function Button({ children, type, setIsModelOpen }) {
       <StyledButton
         $backgroundColor={"green"}
         $margin={"20px"}
-        onClick={() => setIsModelOpen(true)}
+        onClick={
+          setIsModelOpen
+            ? () => {
+                setModelType(type);
+                setIsModelOpen(true);
+              }
+            : undefined
+        }
       >
         {children}
       </StyledButton>
