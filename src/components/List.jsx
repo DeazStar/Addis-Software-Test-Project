@@ -1,11 +1,18 @@
 import SongItem from "./SongItem";
 
-function List({ songs }) {
+function List({ songs, setIsModelOpen, modelType, setModelType }) {
   return (
     <div>
       <hr />
       {songs.map((song) => (
-        <SongItem songname={song.songname} artist={song.artist} />
+        <SongItem
+          key={song.id}
+          songname={song.songname}
+          artist={song.artist}
+          setIsModelOpen={setIsModelOpen}
+          modelType={modelType}
+          setModelType={setModelType}
+        />
       ))}
     </div>
   );
