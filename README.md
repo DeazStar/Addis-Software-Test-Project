@@ -1,8 +1,17 @@
-# React + Vite
+#Addis Software Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a test project for addis software internship
 
-Currently, two official plugins are available:
+### Features of the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- allow user to create songs
+- allow user to show songs
+- allow user to edit songs
+- allow user to delete songs
+
+### Technologies used
+
+- ReactJs
+- Redux Toolkit
+- Redux - Saga
+- Styled Components
