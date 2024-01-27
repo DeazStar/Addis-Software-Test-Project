@@ -6,6 +6,9 @@ function Button({
   setIsModelOpen,
   setModelType,
   handleDelete,
+  handleAdd,
+  handleEditable,
+  handleEdit,
 }) {
   if (type === "add")
     return (
@@ -17,7 +20,7 @@ function Button({
                 setModelType(type);
                 setIsModelOpen(true);
               }
-            : undefined
+            : handleAdd()
         }
       >
         {children}
@@ -41,8 +44,9 @@ function Button({
             ? () => {
                 setModelType(type);
                 setIsModelOpen(true);
+                handleEditable();
               }
-            : undefined
+            : handleEdit()
         }
       >
         {children}

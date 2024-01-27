@@ -30,6 +30,24 @@ const songSlice = createSlice({
       );
       state.isLoading = false;
     },
+    addSongsCall: (state) => {
+      state.isLoading = true;
+    },
+    addSongsSuccess: (state, action) => {
+      state.songs.push(action.payload);
+      state.isLoading = false;
+    },
+    patchSongsCall: (state) => {
+      state.isLoading = true;
+    },
+    patchSongsSuccess: (state, action) => {
+      const songId = action.payload.id;
+      const index = state.songs.findIndex((song) => song.id === songId);
+
+      state.songs[index] = action.payload;
+
+      state.isLoading = false;
+    },
   },
 });
 
@@ -39,6 +57,10 @@ export const {
   getSongsFailure,
   deleteSongsCall,
   deleteSongsSuccess,
+  addSongsCall,
+  addSongsSuccess,
+  patchSongsCall,
+  patchSongsSuccess,
 } = songSlice.actions;
 
 export default songSlice.reducer;

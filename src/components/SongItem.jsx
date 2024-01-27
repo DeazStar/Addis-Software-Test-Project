@@ -4,12 +4,27 @@ import Wrapper from "./styles/Wrapper.styled";
 import { useDispatch } from "react-redux";
 import { deleteSongsCall } from "../features/songs/songSlice";
 
-function SongItem({ song, setIsModelOpen, modelType, setModelType }) {
+function SongItem({
+  song,
+  setIsModelOpen,
+  modelType,
+  setModelType,
+  setSong,
+  setArtist,
+  setSongId,
+}) {
   const dispatch = useDispatch();
 
   function handleDeleteSong(id) {
     console.log("deleting");
     dispatch(deleteSongsCall(id));
+  }
+
+  function handleDisplayEditable() {
+    setSong(song.songname);
+    setArtist(song.artist);
+    setSongId(song.id);
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -25,6 +40,7 @@ function SongItem({ song, setIsModelOpen, modelType, setModelType }) {
             setIsModelOpen={setIsModelOpen}
             modelType={modelType}
             setModelType={setModelType}
+            handleEditable={handleDisplayEditable}
           >
             <p>Edit</p>
           </Button>

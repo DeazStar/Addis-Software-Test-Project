@@ -1,6 +1,11 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import axios from "axios";
-import { getSongsSuccess, deleteSongsSuccess } from "./songSlice";
+import {
+  getSongsSuccess,
+  deleteSongsSuccess,
+  addSongsSuccess,
+  patchSongsSuccess,
+} from "./songSlice";
 
 function* workGetSongsFetch() {
   try {
@@ -31,9 +36,44 @@ function* workDeleteSongs(action) {
   }
 }
 
+function* workAddSong(action) {
+  try {
+    const response = yield call(() =>
+      axios.post(
+        "https://65b23d339bfb12f6eafd3f30.mockapi.io/api/v1/songs/",
+        action.payload
+      )
+    );
+
+    console.log(response);
+    yield put(addSongsSuccess(response.data));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function* workPatchSong(action) {
+  try {
+    const response = yield call(() =>
+      axios.put(
+        `https://65b23d339bfb12f6eafd3f30.mockapi.io/api/v1/songs/${action.payload.id}`,
+        action.payload
+      )
+    );
+
+    console.log(response);
+
+    yield put(patchSongsSuccess(response.data));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 function* songSaga() {
   yield takeEvery("songs/getSongsFetch", workGetSongsFetch);
   yield takeEvery("songs/deleteSongsCall", workDeleteSongs);
+  yield takeEvery("songs/addSongsCall", workAddSong);
+  yield takeEvery("songs/patchSongsCall", workPatchSong);
 }
 
 export default songSaga;
