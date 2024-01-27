@@ -10,6 +10,7 @@ import Container from "./components/styles/Container.styled";
 import Model from "./components/Model";
 import Loading from "./components/Loading";
 import ShadowContainer from "./components/styles/ShadowContainer.styled";
+import { MusicNoteBeamed } from "react-bootstrap-icons";
 
 function App() {
   const [isModelOpen, setIsModelOpen] = useState(false);
@@ -31,6 +32,9 @@ function App() {
       <NavBar />
 
       <Main>
+        <h1>
+          Songs <MusicNoteBeamed />
+        </h1>
         <Button
           type={"add"}
           setIsModelOpen={setIsModelOpen}

@@ -3,6 +3,8 @@ import Button from "./Button";
 import Wrapper from "./styles/Wrapper.styled";
 import { useDispatch } from "react-redux";
 import { deleteSongsCall } from "../features/songs/songSlice";
+import { MusicNoteBeamed } from "react-bootstrap-icons";
+import { PersonUp } from "react-bootstrap-icons";
 
 function SongItem({
   song,
@@ -31,8 +33,12 @@ function SongItem({
     <>
       <Wrapper>
         <div>
-          <SongName>{song.songname}</SongName>
-          <Author>{song.artist}</Author>
+          <SongName>
+            {song.songname} <MusicNoteBeamed />
+          </SongName>
+          <Author>
+            {song.artist} <PersonUp />
+          </Author>
         </div>
         <div>
           <Button
