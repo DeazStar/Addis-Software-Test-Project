@@ -18,6 +18,10 @@ function App() {
   const isLoading = useSelector((state) => state.songs.isLoading);
   const dispatch = useDispatch();
 
+  const [song, setSong] = useState("");
+  const [artist, setArtist] = useState("");
+  const [songId, setSongId] = useState("");
+
   useEffect(() => {
     dispatch(getSongsFetch());
   }, [dispatch]);
@@ -44,6 +48,9 @@ function App() {
               setIsModelOpen={setIsModelOpen}
               modelType={modelType}
               setModelType={setModelType}
+              setSong={setSong}
+              setArtist={setArtist}
+              setSongId={setSongId}
             />
           )}
         </Container>
@@ -54,6 +61,11 @@ function App() {
               setIsModelOpen={setIsModelOpen}
               modelType={modelType}
               setModelType={setModelType}
+              song={song}
+              setSong={setSong}
+              artist={artist}
+              setArtist={setArtist}
+              songId={songId}
             />
           </ShadowContainer>
         )}
