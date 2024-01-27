@@ -1,4 +1,4 @@
-#Addis Software Test Project
+# Addis Software Test Project
 
 This is a test project for addis software internship
 
@@ -15,3 +15,6 @@ This is a test project for addis software internship
 - Redux Toolkit
 - Redux - Saga
 - Styled Components
+- mockapi.io( for a mock api)
+
+`access the site using https://main--nimble-vacherin-cc8367.netlify.app/`
